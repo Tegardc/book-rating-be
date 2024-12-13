@@ -19,20 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
-// Route::get('/books', [BooksController::class, 'index'])->name('books.index');
-// Route::get('/rate', [RatingController::class, 'create'])->name('rate.create');
-// // Route::post('/rate', [RatingController::class, 'store'])->name('rate.store');
-
-// Route::get('/getBooks/{author_id}', [RatingController::class, 'getBooks']);
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
-
-// Route untuk Books
 Route::get('/books', [BooksController::class, 'index'])->name('books.index');
-
-// Route untuk Rating
 Route::get('/rate', [RatingController::class, 'create'])->name('rate.create');
-Route::post('/rate', [RatingController::class, 'store'])->name('rate.store'); // Dinyalakan kembali
+Route::post('/rate', [RatingController::class, 'store'])->name('rate.store');
 
-// Route untuk mengambil daftar buku berdasarkan Author
 Route::get('/getBooks/{author_id}', [RatingController::class, 'getBooks'])->name('books.byAuthor');

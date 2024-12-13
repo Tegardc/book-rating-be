@@ -23,17 +23,7 @@ class RatingController extends Controller
      */
     public function create(Request $request)
     {
-        // $authors = Author::orderBy('name', 'asc')->get();
-        // $books = collect(); // Awalnya koleksi kosong
 
-        // if ($request->has('author_id')) {
-        //     // Filter buku berdasarkan penulis yang dipilih
-        //     $books = Books::where('author_id', $request->author_id)
-        //         ->orderBy('title', 'asc') // Pastikan orderBy digunakan sebelum get
-        //         ->get();
-        // }
-
-        // return view('ratings.create', compact('authors', 'books'));
         $authors = Author::with('books')->get();
         return view('ratings.index', compact('authors'));
         //
@@ -55,8 +45,6 @@ class RatingController extends Controller
         ]);
         Log::info('Rating successfully created:', $rating->toArray());
         return redirect()->route('books.index')->with('success', 'Rating submitted successfully');
-        // return redirect()->route('books.index')->with('success', 'Rating submitted successfully');
-        // //
     }
     public function getBooks($author_id)
     {
